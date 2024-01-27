@@ -19,6 +19,10 @@ public class BusinessException extends RuntimeException{
         this.code = errorCode.getCode();
     }
 
+    public BusinessException(ErrorCode errorCode) {
+        this.code = errorCode.getCode();
+    }
+
     public int getCode() {
         return code;
     }
