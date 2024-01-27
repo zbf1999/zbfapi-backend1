@@ -32,3 +32,7 @@ mybatis-plus:
       logic-delete-field: isDelete
       logic-delete-value: 1
       logic-not-delete-value: 0
+zbfapi:
+  client:
+    access-key: 7c1e0c43809d6d66ee6cfa009c28ab8b
+    secret-key: 2784077ab2be00ca71435c35814bdf65
