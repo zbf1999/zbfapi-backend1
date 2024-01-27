@@ -3,9 +3,11 @@ package com.zbf.zbfapibackend.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
+import com.zbf.zbfapibackend.annotation.AuthCheck;
 import com.zbf.zbfapibackend.common.BaseResponse;
 import com.zbf.zbfapibackend.common.ErrorCode;
 import com.zbf.zbfapibackend.common.ResultUtils;
+import com.zbf.zbfapibackend.constant.UserConstant;
 import com.zbf.zbfapibackend.exception.BusinessException;
 import com.zbf.zbfapibackend.model.dto.user.UserLoginRequest;
 import com.zbf.zbfapibackend.model.dto.user.UserQueryRequest;
@@ -104,6 +106,7 @@ public class UserController {
     }
     
     @GetMapping("/list/page")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public BaseResponse<Page<UserLoginVo>> listUserByPage(UserQueryRequest userQueryRequest) {
         long current = 1;
         long size = 10;

@@ -124,18 +124,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Override
     public UserLoginVo getLoginUser(HttpServletRequest request) {
         Object userObj = request.getSession().getAttribute(USER_LOGIN_STATE);
-        User user = (User) userObj;
+        UserLoginVo user = (UserLoginVo) userObj;
         if (user == null || user.getId() == null) {
-            throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
+            throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR, "未登录");
         }
         Long id = user.getId();
-        user = this.getById(id);
-        if (user == null) {
+        User byId = this.getById(id);
+        if (byId == null) {
             throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
         }
-        UserLoginVo userLoginVo = new UserLoginVo();
-        BeanUtils.copyProperties(userLoginVo, user);
-        return userLoginVo;
+        return user;
     }
 
     @Override
