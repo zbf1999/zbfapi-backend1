@@ -19,6 +19,7 @@ import com.zbf.zbfapibackend.service.UserService;
 import com.zbf.zbfapiclientsdk.client.ZbfApiClient;
 import com.zbf.zbfapicommon.model.entity.InterfaceInfo;
 import com.zbf.zbfapicommon.model.entity.User;
+import com.zbf.zbfapicommon.model.entity.UserTest;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
@@ -160,8 +161,8 @@ public class InterfaceInfoController {
         String accessKey = user.getAccessKey();
         String secretKey = user.getSecretKey();
         zbfApiClient.setCredentials(accessKey, secretKey);
-        User userTemp = new User();
-        userTemp.setUserName("zbf");
+        UserTest userTemp = new UserTest();
+        userTemp.setUsername("zbf");
         String result = zbfApiClient.requestBody(url, userTemp);
         if (StringUtils.isBlank(result)) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "接口验证失败");
@@ -221,8 +222,8 @@ public class InterfaceInfoController {
         String secretKey = user.getSecretKey();
         zbfApiClient.setCredentials(accessKey, secretKey);
         Gson gson = new Gson();
-        User userTemp = gson.fromJson(userRequestParams, User.class);
-        String url = "http://localhost:8123/api/name/user";
+        UserTest userTemp = gson.fromJson(userRequestParams, UserTest.class);
+        String url = "http://localhost:8090/api/name/user";
         String usernameByPost = zbfApiClient.requestBody(url, userTemp);
         return ResultUtils.success(usernameByPost);
     }

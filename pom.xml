@@ -70,14 +70,14 @@
         <dependency>
             <groupId>com.zbf</groupId>
             <artifactId>zbfapi-common</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2</version>
         </dependency>
 
         <!--        zbfapi-client-sdk-->
         <dependency>
             <groupId>com.zbf</groupId>
             <artifactId>zbfapi-client-sdk</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2</version>
         </dependency>
 
         <!-- Spring Session Redis -->
@@ -120,6 +120,20 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.9.0</version>
+        </dependency>
+
+        <!-- dubbo nacos-->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>3.2.5</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba.nacos/nacos-client -->
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+            <version>2.3.0</version>
         </dependency>
         
     </dependencies>

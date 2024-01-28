@@ -11,4 +11,6 @@ import com.zbf.zbfapicommon.model.entity.UserInterfaceInfo;
 */
 public interface UserInterfaceInfoService extends IService<UserInterfaceInfo> {
 
+
+    boolean invokeCount(long interfaceInfoId, long userId);
 }
