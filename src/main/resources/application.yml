@@ -32,12 +32,16 @@ mybatis-plus:
       logic-delete-field: isDelete
       logic-delete-value: 1
       logic-not-delete-value: 0
-dubbo:
-  application:
-    name: dubbo-springboot-demo-provider
-  protocol:
-    name: dubbo
-    port: -1
-  registry:
-    id: nacos-registry
-    address: nacos://localhost:8848
+#dubbo:
+#  application:
+#    name: dubbo-springboot-demo-provider
+#  protocol:
+#    name: dubbo
+#    port: -1
+#  registry:
+#    id: nacos-registry
+yuapi:
+  client:
+    secret-key: zb603xny8f0xlxm793oa0vqqxqfak2ww
+    access-key: sneo9hsmpl3z0vg893al530w0dunxjto
+#    address: nacos://localhost:8848

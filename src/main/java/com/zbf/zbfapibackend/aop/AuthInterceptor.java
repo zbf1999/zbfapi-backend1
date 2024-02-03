@@ -41,6 +41,8 @@ public class AuthInterceptor {
                 throw new BusinessException(ErrorCode.NO_AUTH_ERROR, "无权限");
             }
         }
+        //冒泡排序
+        
         
         if (StringUtils.isNotBlank(mustRole)) {
             String userRole = user.getUserRole();

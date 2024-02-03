@@ -28,6 +28,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+/**
+ * @author zbf
+ */
 @RestController
 @RequestMapping("/interface")
 public class InterfaceInfoController {
@@ -75,7 +79,7 @@ public class InterfaceInfoController {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
         }
         // 仅本人或管理员可删除
-        if (!oldInterfaceInfo.getUserId().equals(user.getId()) && !userService.isAdmin(request)) {
+        if (!oldInterfaceInfo.getUserId().equals(user.getId()) && userService.isNotAdmin(request)) {
             throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
         }
         boolean b = interfaceInfoService.removeById(id);
@@ -101,7 +105,7 @@ public class InterfaceInfoController {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
         }
         // 仅本人或管理员可修改
-        if (!oldInterfaceInfo.getUserId().equals(user.getId()) && !userService.isAdmin(request)) {
+        if (!oldInterfaceInfo.getUserId().equals(user.getId()) && userService.isNotAdmin(request)) {
             throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
         }
         boolean result = interfaceInfoService.updateById(interfaceInfo);
@@ -110,9 +114,6 @@ public class InterfaceInfoController {
 
     /**
      * 根据 id 获取
-     *
-     * @param id
-     * @return
      */
     @GetMapping("/get")
     public BaseResponse<InterfaceInfo> getInterfaceInfoById(long id) {
@@ -149,8 +150,8 @@ public class InterfaceInfoController {
         String sortOrder = interfaceInfoQueryRequest.getSortOrder();
         String description = interfaceInfoQueryRequest.getDescription();
         interfaceInfo.setDescription(null);
-        if (size > 50) {
-            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        if (size > CommonConstant.MAX_PAGE_SIZE) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "每页最大条数为" + CommonConstant.MAX_PAGE_SIZE);
         }
         QueryWrapper<InterfaceInfo> queryWrapper = new QueryWrapper<>(interfaceInfo);
         queryWrapper.like(StringUtils.isNotBlank(description), "description", description);
