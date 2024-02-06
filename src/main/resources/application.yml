@@ -6,8 +6,6 @@ spring:
     url: jdbc:mysql://localhost:3306/zbfapi
     username: root
     password: 121388
-  profiles:
-    active: dev
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -22,8 +20,8 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
-    password: guest
-    username: guest
+    password: zbf1999
+    username: 121388
 server:
   port: 8080
   servlet:
@@ -37,16 +35,16 @@ mybatis-plus:
       logic-delete-field: isDelete
       logic-delete-value: 1
       logic-not-delete-value: 0
-#dubbo:
-#  application:
-#    name: dubbo-springboot-demo-provider
-#  protocol:
-#    name: dubbo
-#    port: -1
-#  registry:
-#    id: nacos-registry
+dubbo:
+  application:
+    name: dubbo-springboot-demo-provider
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    id: nacos-registry
+    address: nacos://localhost:8848
 yuapi:
   client:
     secret-key: zb603xny8f0xlxm793oa0vqqxqfak2ww
     access-key: sneo9hsmpl3z0vg893al530w0dunxjto
-#    address: nacos://localhost:8848
