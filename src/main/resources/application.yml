@@ -20,8 +20,8 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
-    password: zbf1999
-    username: 121388
+    password: guest
+    username: guest
 server:
   port: 8080
   servlet:
