@@ -23,26 +23,18 @@ public class TestUtils {
     private UserService userService;
     
     public void test() {
-        long current = 1;
-        long size = 10;
-        User userQuery = new User();
         
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>(userQuery);
-        Page<User> userPage = userService.page(new Page<>(current, size), queryWrapper);
-        System.out.println(userPage);
-        System.out.println(userPage.getRecords());
-        Page<UserLoginVo> userLoginVoPage = new PageDTO<>(userPage.getCurrent(), userPage.getSize(), userPage.getTotal());
-        List<UserLoginVo> userLoginVoList = userPage.getRecords().stream().map(user -> {
-            UserLoginVo userLoginVo = new UserLoginVo();
-            BeanUtils.copyProperties(user, userLoginVo);
-            return userLoginVo;
-        }).toList();
-        userLoginVoPage.setRecords(userLoginVoList);
-        System.out.println(ResultUtils.success(userLoginVoPage));
     }
     
     public static void main(String[] args) {
-        TestUtils test = new TestUtils();
-        test.test();
+        //lambda demo
+        Runnable runnable = () -> System.out.println("Hello World");
+        runnable.run();
+        //复杂一点的lambda demo
+        Runnable runnable1 = () -> {
+            System.out.println("Hello World");
+            System.out.println("Hello World");
+        };  
+        runnable1.run();
     }
 }
